@@ -6,7 +6,7 @@
   "scripts": {
     "webpack": "webpack",
     "start:react-dev": "webpack -w",
-    "start:server-dev": "nodemon server",
+    "start:server-dev": "nodemon server/server.js",
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
   },
   "keywords": [],
@@ -34,6 +34,7 @@
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bluebird": "^3.7.2",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
