@@ -7,8 +7,8 @@ const Wilson = (props) => {
       {props.wilson.map((wils) => (
         <div>
           <img src={wils.url} alt='wilson' />
-          <p>{wils.model}</p>
-          <p>{wils.price}</p>
+          <p className='type'>{wils.model}</p>
+          <p className="price">{wils.price}</p>
         </div>
       ))}
     </div>
