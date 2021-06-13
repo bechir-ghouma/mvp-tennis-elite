@@ -1,40 +1,210 @@
 body {
-    margin: 0px;
-    padding: 0px;
-    background-color: white;
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+  background-color: white;
 }
-a {
-    text-decoration: none;
+.bigBox {
+  display: flex;
 }
-.box {
-    width : 300px ; 
-    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+.slider-box {
+  height: 410px;
+  width: 250px;
+  position: relative;
+  background-color: white;
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(187, 187, 187, 0.4);
 }
-.slide-img{
-    height: 450px
+.slider-box a {
+  text-decoration: none;
+  text-align: center;
 }
-.slide-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    box-sizing: border-box;
+.img-box img {
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
-.detail-box{
-    width:100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 35px;
+  color: black;
+  text-decoration: none;
 }
-.type {
-    display: flex;
-    flex-direction: column;
+.price {
+  color: black;
+  line-height: 20px;
+}
+.cart {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 45px;
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart a {
+  color: white;
+}
+.slider-box:hover {
+  box-shadow: 2px 2px 12px rgb(85, 85, 83);
+}
+.slider-box:hover .img-box {
+  transform: scale(1.01);
+  transition: all ease 0.3s;
+}
+.cart:hover {
+  transform: scale(1.05);
+  background-color: yellow;
+  box-shadow: 2px 2px 12px rgba(47, 47, 47, 0.4);
+  transition: all ease 0.3s;
+}
+.brands {
+  color: black;
+  font-weight: inherit;
+  text-align: center;
+  font-size: 40px;
+  margin-left: 15px;
+}
+nav{
+  width: 100%;
+  margin-left: 50px;
+  margin-top: 0px;
+  position: relative;
+  text-align: left;
+  height: 60px;
+  background-color: white;
+}
+.list{
+  width: 100%;
+  float: right;
+  margin-top: 0px;
+}
+.list li{
+  display: inline-block;
+  padding: 15px 50px;
+  margin-top: 0px;
+  position: relative;
+}
+.btn {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  background: black;
+  width: 20px;
+  height: auto; 
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 3%;
+  cursor: pointer;
+  box-shadow: yellow;
+  display: inline-block;
+}
+
+.logo{
+  height: 85px;
+  width: 210px;
+  margin-left: 0px;
+}
+.search{
+  margin-top: 20px;
+  height: 35px;
+  width: 300px;
+}
+nav list li a{
+  text-align: center;
+  font-size: 1.2vw;
+}
+nav list li{
+  display: inline-block;
+  margin:  0 5px;
+}
+nav ul{
+  float: right;
+  margin-right: 30px;
+}
+.copy{
+  text-align: center;
+  color: rgb(77, 76, 76);
+  font-family: sans-serif;
+  font-size: 10px;
+}
+.iconn{
+  text-decoration: none;
+  color: white;
+}
+nav a{
+  display: block;
+  
+}
+nav li{
+  display: inline-block;
+}
+.btn:hover{
+  background: yellow;
+  transition: 0.2s;
+}
+.about{
+  display: flex;
+}
+.me{
+  height: 700px;
+  width: 500px;
+  margin-left: 50px;
+  margin-top: 15px;
+}
+.descr{
+  background-color: rgb(78, 78, 78);
+  font-size: 28px;
+  color: yellow;
+  text-align: center;
+  margin-top: 250px;
+  margin-bottom: 200px;
+}
+.category{
+  margin-top: 62px;
+  margin-right: 0px;
+}
+.category ul{
+  list-style: none;
+  background: yellow;
+  text-align: center;
+  display: flex;
+}
+.category a{
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  width: 20%; 
+  padding: 20px;
+  font-size: 17px;
+}
+.category a:hover{
+  color : white;
+  background-color: black;
+  transition: 0.3s;
+}
+.sum{
+  display: block;
+  text-align: center;
+}
+.sump{
+  font-size: 50px;
+  font-family: sans-serif;
+}
+.sumf{
+  font-size: 80px;
+  font-family: sans-serif;
 }

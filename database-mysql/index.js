@@ -102,6 +102,15 @@ var selectClothes = function (callback) {
     }
   });
 };
+var selectPocket = function (callback) {
+  db.query('SELECT * FROM pocket', function (err, results) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
 
 module.exports = {
   selectWilson,
@@ -114,4 +123,5 @@ module.exports = {
   selectBags,
   selectBackpack,
   selectClothes,
+  selectPocket,
 };

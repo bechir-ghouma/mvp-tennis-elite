@@ -2,12 +2,24 @@ import React from "react";
 
 const Babolat = (props) => {
   return (
-    <div>
+    <div className="bigBox">
       {props.babolat.map((babo) => (
-        <div>
-          <img src={babo.url} alt='babolat'/>
-          <p>{babo.model}</p>
-          <p>{babo.price}</p>
+        <div
+          className="slider-box"
+          onClick={() => props.handleClick(babo.price)}
+        >
+          <div className="img-box">
+            <img src={babo.url} alt="babolat" />
+          </div>
+          <div className="detail">
+            <a href="#">{babo.model}</a>
+          </div>
+          <a href="#" className="price">
+            {babo.price}$
+          </a>
+          <div className="cart">
+            <a href="#">Add To Cart</a>
+          </div>
         </div>
       ))}
     </div>

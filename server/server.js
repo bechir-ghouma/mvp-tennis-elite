@@ -1,16 +1,15 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-const db = require('../database-mysql/index.js');
-var items = require('../database-mysql');
+var express = require("express");
+var bodyParser = require("body-parser");
+const db = require("../database-mysql/index.js");
+var items = require("../database-mysql");
 
 var app = express();
 const PORT = 7000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/../client/build'));
-es;
-app.get('/wilson', function (req, res) {
+app.use(express.static(__dirname + "/../client/build"));
+app.get("/wilson", function (req, res) {
   db.selectWilson(function (err, data) {
     if (err) {
       console.log(err);
@@ -21,7 +20,7 @@ app.get('/wilson', function (req, res) {
   });
 });
 
-app.get('/nike', function (req, res) {
+app.get("/nike", function (req, res) {
   db.selectNike(function (err, data) {
     if (err) {
       console.log(err);
@@ -32,7 +31,7 @@ app.get('/nike', function (req, res) {
   });
 });
 
-app.get('/head', function (req, res) {
+app.get("/head", function (req, res) {
   db.selectHead(function (err, data) {
     if (err) {
       console.log(err);
@@ -42,7 +41,7 @@ app.get('/head', function (req, res) {
     }
   });
 });
-app.get('/babolat', function (req, res) {
+app.get("/babolat", function (req, res) {
   db.selectBabolat(function (err, data) {
     if (err) {
       console.log(err);
@@ -52,7 +51,7 @@ app.get('/babolat', function (req, res) {
     }
   });
 });
-app.get('/diadora', function (req, res) {
+app.get("/diadora", function (req, res) {
   db.selectDiadora(function (err, data) {
     if (err) {
       console.log(err);
@@ -62,7 +61,7 @@ app.get('/diadora', function (req, res) {
     }
   });
 });
-app.get('/rackets', function (req, res) {
+app.get("/rackets", function (req, res) {
   db.selectRackets(function (err, data) {
     if (err) {
       console.log(err);
@@ -72,7 +71,7 @@ app.get('/rackets', function (req, res) {
     }
   });
 });
-app.get('/shoes', function (req, res) {
+app.get("/shoes", function (req, res) {
   db.selectShoes(function (err, data) {
     if (err) {
       console.log(err);
@@ -82,7 +81,7 @@ app.get('/shoes', function (req, res) {
     }
   });
 });
-app.get('/bags', function (req, res) {
+app.get("/bags", function (req, res) {
   db.selectBags(function (err, data) {
     if (err) {
       console.log(err);
@@ -92,7 +91,7 @@ app.get('/bags', function (req, res) {
     }
   });
 });
-app.get('/backpack', function (req, res) {
+app.get("/backpack", function (req, res) {
   db.selectBackpack(function (err, data) {
     if (err) {
       console.log(err);
@@ -102,8 +101,18 @@ app.get('/backpack', function (req, res) {
     }
   });
 });
-app.get('/clothes', function (req, res) {
+app.get("/clothes", function (req, res) {
   db.selectClothes(function (err, data) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.json(data);
+    }
+  });
+});
+app.get("/pocket", function (req, res) {
+  db.selectPocket(function (err, data) {
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -114,5 +123,5 @@ app.get('/clothes', function (req, res) {
 });
 
 app.listen(7000, function () {
-  console.log('listening on port 7000!');
+  console.log("listening on port 7000!");
 });

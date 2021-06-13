@@ -1,14 +1,22 @@
 import React from "react";
+// import account from "../logo/LogoMakr-8MvvF1.png";
 import logo from "../logo/LogoMakr-2pyzuo.png";
-import about from "../logo/LogoMakr-9YYT09.png";
-import facebook from "../logo/LogoMakr-6aVHrR.png";
-import sponsor from "../logo/Capture d’écran 2021-05-16 003123.png";
+import About from "./About.jsx";
+// import about from "../logo/LogoMakr-9YYT09.png";
+// import facebook from "../logo/LogoMakr-6aVHrR.png";
+// import myPosts from "../logo/LogoMakr-3CQm5j.png";
 import axios from "axios";
 import Wilson from "./Wilson.jsx";
 import Nike from "./Nike.jsx";
 import Head from "./Head.jsx";
 import Babolat from "./Babolat.jsx";
 import Diadora from "./Diadora.jsx";
+import Account from "./Account.jsx";
+import Clothes from "./Clothes.jsx";
+import Shoes from "./Shoes.jsx";
+import Rackets from "./Rackets.jsx";
+import Bags from "./Bags.jsx";
+import Backpack from "./Backpack.jsx";
 
 class Home extends React.Component {
   constructor(props) {
@@ -19,13 +27,24 @@ class Home extends React.Component {
       head: [],
       babolat: [],
       diadora: [],
+      backpacks: [],
+      bags: [],
+      clothes: [],
+      shoes: [],
+      rackets: [],
       view: "home",
+      pocket: 0,
+      counter: 0,
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.renderView = this.renderView.bind(this);
+    this.changeView = this.changeView.bind(this);
   }
   componentDidMount() {
     axios
       .get("/wilson")
       .then((result) => {
+        console.log(result.data, "hgfd");
         this.setState({ wilson: result.data });
         // console.log(result);
       })
@@ -64,75 +83,207 @@ class Home extends React.Component {
       .catch((err) => {
         console.error(err);
       });
+    // axios
+    //   .get("/pocket")
+    //   .then((result) => {
+    //     this.setState({ pocket: result.data });
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+    axios
+      .get("/shoes")
+      .then((result) => {
+        this.setState({ shoes: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/backpack")
+      .then((result) => {
+        this.setState({ backpacks: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/bags")
+      .then((result) => {
+        this.setState({ bags: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/clothes")
+      .then((result) => {
+        this.setState({ clothes: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/rackets")
+      .then((result) => {
+        this.setState({ rackets: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  renderView() {
+    const { view } = this.state;
+    console.log(view);
+    if (view === "home") {
+      return (
+        <div>
+          <div className="wrapper">
+            <nav className="shodow">
+              <ul className="list">
+                <li>
+                  <a href="/">
+                    <img src={logo} alt="logo" className="logo" />
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <input
+                      type="text"
+                      placeholder=" search..."
+                      className="search"
+                    ></input>
+                  </a>
+                </li>
+                <li className="btn">
+                  <a href="#" className="iconn">
+                    <div onClick={() => this.changeView("account")}>
+                      {/* <img src={account} alt="account" className="icon" /> */}
+                      <small className="none" >Account</small>
+                    </div>
+                  </a>
+                </li>
+                &nbsp;
+                <li className="btn">
+                  <a className="iconn" onClick={() => this.changeView("about")}>
+                    {/* <img src={about} alt="contact" className="icon"/> */}
+                    <small className="none">About</small>
+                  </a>
+                </li>
+                &nbsp;
+                <li className="btn">
+                  <a
+                    href="https://www.facebook.com/bechir.ghouma.104/"
+                    className="iconn"
+                  >
+                    <small className="none">Feedback</small>
+                  </a>
+                </li>
+                &nbsp;
+                <li className="btn">
+                  <a href="#" className="iconn">
+                    <small className="none">Posts</small>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div className="category">
+            <ul>
+              <a href="#" onClick={() => this.changeView("rackets")}>
+                Tennis Rackets
+              </a>
+              <a href="#" onClick={() => this.changeView("shoes")}>
+                Tennis Shoes
+              </a>
+              <a href="#" onClick={() => this.changeView("bags")}>
+                Tennis Bags
+              </a>
+              <a href="#" onClick={() => this.changeView("backpacks")}>
+                Tennis Backpack
+              </a>
+              <a href="#" onClick={() => this.changeView("clothes")}>
+                Tennis Clothes
+              </a>
+            </ul>
+          </div>
+          <p className="brands">Wilson Products</p>
+          <Wilson wilson={this.state.wilson} handleClick={this.handleClick} />
+          <br></br>
+          <p className="brands">Nike Products</p>
+          <Nike nike={this.state.nike} handleClick={this.handleClick} />
+          <br></br>
+          <p className="brands">Head Products</p>
+          <Head head={this.state.head} handleClick={this.handleClick} />
+          <br></br>
+          <p className="brands">Babolat Products</p>
+          <Babolat
+            babolat={this.state.babolat}
+            handleClick={this.handleClick}
+          />
+          <br></br>
+          <p className="brands">Diadora Products</p>
+          <Diadora
+            diadora={this.state.diadora}
+            handleClick={this.handleClick}
+          />
+          <br></br>
+          <br></br>
+          <p className="copy">copyright boshreem</p>
+        </div>
+      );
+    } else if (view === "shoes") {
+      return <Shoes shoes={this.state.shoes} handleClick={this.handleClick} />;
+    } else if (view === "rackets") {
+      return (
+        <Rackets rackets={this.state.rackets} handleClick={this.handleClick} />
+      );
+    } else if (view === "clothes") {
+      return (
+        <Clothes clothes={this.state.clothes} handleClick={this.handleClick} />
+      );
+    } else if (view === "bags") {
+      return <Bags bags={this.state.bags} handleClick={this.handleClick} />;
+    } else if (view === "backpacks") {
+      return (
+        <Backpack
+          backpacks={this.state.backpacks}
+          handleClick={this.handleClick}
+        />
+      );
+    } else if (view === "account") {
+      return (
+        <Account pocket={this.state.pocket} handleClick={this.handleClick} />
+      );
+    } else if (view === "about") {
+      return <About handleClick={this.handleClick} />;
+    }
   }
   changeView(view) {
     this.setState({
       view: view,
     });
   }
-  renderView() {
-    const { view } = this.state;
-    if (view === "home") {
-      return <Home />;
-    } else if (view === "shoes") {
-      return <Shoes />;
-    } else if (view === "rackets") {
-      return <Rackets />;
-    } else if (view === "clothes") {
-      return <Clothes />;
-    } else if (view === "bags") {
-      return <Bags />;
-    } else if (view === "backpacks") {
-      return <Backpack />;
+  //PATCH /cart/:tables  /:id
+
+  handleClick(price) {
+    if (this.state.counter >= 1) {
+      this.setState({
+        pocket: this.state.pocket + price,
+        counter: this.state.counter + 1,
+      });
+    } else {
+      this.setState({
+        pocket: price,
+        counter: this.state.counter + 1,
+      });
     }
+    console.log(this.state.counter);
+    console.log(this.state.pocket, "pockeeeeeeet");
   }
   render() {
-    return (
-      <div>
-        <nav>
-          <img src={logo} alt="logo" />
-          <input type="text" placeholder=" search..."></input>
-          <ul>
-            <li>
-              <div>
-                {/* put your change view in a tag */}
-                <img src="account" alt="account" />
-                <small>My Account</small>
-              </div>
-            </li>
-            <li>
-              <a href="about.html">
-                <img src={about} alt="contact" />
-                <small>About Us</small>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/bechir.ghouma.104/">
-                <img src={facebook} alt="facebook" />
-                <small>Feedback</small>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <nav>
-          <ul>
-            <li>Tennis Rackets</li>
-            <li>Tennis Shoes</li>
-            <li>Tennis Bags</li>
-            <li>Tennis Backpack</li>
-            <li>Strings and Balls</li>
-            <li>Tennis Clothes</li>
-            {/* make shadow for them */}
-          </ul>
-        </nav>
-        <Wilson wilson={this.state.wilson} />
-        <Nike nike={this.state.nike} />
-        <Head head={this.state.head} />
-        <Babolat babolat={this.state.babolat} />
-        <Diadora diadora={this.state.diadora} />
-        <img src={sponsor} alt="sponsor" />
-      </div>
-    );
+    return <>{this.renderView()}</>;
   }
 }
 export default Home;

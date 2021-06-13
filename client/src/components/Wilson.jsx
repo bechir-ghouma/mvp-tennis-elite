@@ -1,14 +1,25 @@
 import React from "react";
 
 const Wilson = (props) => {
-  console.log(props);
   return (
-    <div className="box">
+    <div className="bigBox">
       {props.wilson.map((wils) => (
-        <div>
-          <img src={wils.url} alt='wilson' />
-          <p className='type'>{wils.model}</p>
-          <p className="price">{wils.price}</p>
+        <div
+          className="slider-box"
+          onClick={() => props.handleClick(wils.price)}
+        >
+          <div className="img-box">
+            <img src={wils.url} alt="wilson" />
+          </div>
+          <div className="detail">
+            <a href="#">{wils.model}</a>
+          </div>
+          <a href="#" className="price">
+            {wils.price}$
+          </a>
+          <div className="cart">
+            <a href="#">Add To Cart</a>
+          </div>
         </div>
       ))}
     </div>
