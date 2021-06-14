@@ -14,3 +14,4 @@ var Search = (props) => {
     </div>
   );
 };
+export default Search;

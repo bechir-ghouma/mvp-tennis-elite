@@ -6,6 +6,7 @@ body {
 }
 .bigBox {
   display: flex;
+  flex-wrap: wrap;
 }
 .slider-box {
   height: 410px;
@@ -13,8 +14,7 @@ body {
   position: relative;
   background-color: white;
   border-radius: 3%;
-  display: flex;
-  flex-direction: column;
+
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -98,12 +98,9 @@ nav {
   position: relative;
 }
 .btn {
-  text-decoration: none;
-  color: white;
   font-size: 18px;
   font-weight: bold;
   background: black;
-  width: 20px;
   height: auto;
   text-align: center;
   text-transform: uppercase;
@@ -222,14 +219,28 @@ nav li {
 .pbtn {
   display: inline-block;
   text-decoration: none;
-  color: white;
-  background: black;
+  color: black;
+  background: yellow;
   width: 20%;
   padding: 20px;
   font-size: 17px;
 }
 .pbtn:hover {
+  color: white;
+  background-color: black;
+  transition: 0.3s;
+}
+.sumb{
+  display: inline-block;
+  text-decoration: none;
   color: black;
-  background-color: yellow;
+  background: yellow;
+  width: 15%;
+  padding: 20px;
+  font-size: 17px;
+}
+.sumb:hover {
+  color: white;
+  background-color: black;
   transition: 0.3s;
 }
