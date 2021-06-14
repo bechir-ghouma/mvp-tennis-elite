@@ -14,10 +14,7 @@ const MyPosts = (props) => {
           <a href="#" className="price">
             {mypost.price}$
           </a>
-          <div
-            className="cart"
-            //   onClick={() => props.handleClick(nik.price)}
-          >
+          <div className="cart" onClick={() => props.deleteItem(mypost.price)}>
             <a href="#">Delete Item</a>
           </div>
         </div>

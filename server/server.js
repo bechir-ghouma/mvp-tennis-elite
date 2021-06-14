@@ -140,6 +140,15 @@ app.get("/getme", function (req, res) {
     }
   });
 });
+app.delete("/post/:id", (req, res) => {
+  db.deleteComment(req.params.comment, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
 app.listen(7000, function () {
   console.log("listening on port 7000!");
 });

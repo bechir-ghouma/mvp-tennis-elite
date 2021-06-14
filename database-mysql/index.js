@@ -129,6 +129,11 @@ var getItems = function (callback) {
     }
   });
 };
+var deleteItem = (id, cb) => {
+  db.query("DELETE FROM posts WHERE id = ?", id, (err, event) => {
+    cb(err, event);
+  });
+};
 
 module.exports = {
   selectWilson,
@@ -144,4 +149,5 @@ module.exports = {
   selectPocket,
   postItem,
   getItems,
+  deleteItem,
 };

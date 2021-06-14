@@ -1,4 +1,6 @@
 import React from "react";
+import logo from "../logo/LogoMakr-2pyzuo.png";
+
 
 const Babolat = (props) => {
   return (

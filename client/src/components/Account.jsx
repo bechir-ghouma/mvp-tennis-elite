@@ -3,6 +3,8 @@ import logo from "../logo/LogoMakr-2pyzuo.png";
 import axios from "axios";
 import swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import {Link} from 'react-router';
+
 
 class Account extends React.Component {
   constructor(props) {
@@ -13,7 +15,7 @@ class Account extends React.Component {
   buy(e) {
     if (this.props.pocket === 0) {
       swal.fire({
-        icon: "Error",
+        icon: "error",
         title: "Error",
         text: "Choose something to buy first",
       });

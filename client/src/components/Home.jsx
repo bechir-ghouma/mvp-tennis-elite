@@ -2,9 +2,7 @@ import React from "react";
 // import account from "../logo/LogoMakr-8MvvF1.png";
 import logo from "../logo/LogoMakr-2pyzuo.png";
 import About from "./About.jsx";
-// import about from "../logo/LogoMakr-9YYT09.png";
-// import facebook from "../logo/LogoMakr-6aVHrR.png";
-// import myPosts from "../logo/LogoMakr-3CQm5j.png";
+import Search from "./Search.jsx";
 import axios from "axios";
 import Wilson from "./Wilson.jsx";
 import Nike from "./Nike.jsx";
@@ -18,6 +16,7 @@ import Rackets from "./Rackets.jsx";
 import Bags from "./Bags.jsx";
 import Backpack from "./Backpack.jsx";
 import Post from "./Post.jsx";
+import MyPosts from "./MyPosts.jsx";
 
 class Home extends React.Component {
   constructor(props) {
@@ -37,10 +36,14 @@ class Home extends React.Component {
       view: "home",
       pocket: 0,
       counter: 0,
+      word: "",
+      data: [],
     };
     this.handleClick = this.handleClick.bind(this);
     this.renderView = this.renderView.bind(this);
     this.changeView = this.changeView.bind(this);
+    this.searching = this.searching.bind(this);
+    this.fetch = this.fetch.bind(this);
   }
   componentDidMount() {
     axios
@@ -48,7 +51,7 @@ class Home extends React.Component {
       .then((result) => {
         console.log(result.data, "hgfd");
         this.setState({ wilson: result.data });
-        // console.log(result);
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -57,6 +60,7 @@ class Home extends React.Component {
       .get("/nike")
       .then((result) => {
         this.setState({ nike: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -65,6 +69,7 @@ class Home extends React.Component {
       .get("/head")
       .then((result) => {
         this.setState({ head: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -73,6 +78,7 @@ class Home extends React.Component {
       .get("/babolat")
       .then((result) => {
         this.setState({ babolat: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -81,6 +87,7 @@ class Home extends React.Component {
       .get("/diadora")
       .then((result) => {
         this.setState({ diadora: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -89,6 +96,7 @@ class Home extends React.Component {
       .get("/getme")
       .then((result) => {
         this.setState({ items: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -97,6 +105,7 @@ class Home extends React.Component {
       .get("/shoes")
       .then((result) => {
         this.setState({ shoes: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -105,6 +114,7 @@ class Home extends React.Component {
       .get("/backpack")
       .then((result) => {
         this.setState({ backpacks: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -113,6 +123,7 @@ class Home extends React.Component {
       .get("/bags")
       .then((result) => {
         this.setState({ bags: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -121,6 +132,7 @@ class Home extends React.Component {
       .get("/clothes")
       .then((result) => {
         this.setState({ clothes: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -129,10 +141,12 @@ class Home extends React.Component {
       .get("/rackets")
       .then((result) => {
         this.setState({ rackets: result.data });
+        this.fetch();
       })
       .catch((err) => {
         console.error(err);
       });
+    this.fetch();
   }
 
   renderView() {
@@ -155,12 +169,17 @@ class Home extends React.Component {
                       type="text"
                       placeholder=" search..."
                       className="search"
+                      searching={this.searching}
+                      data={this.state.data}
                     ></input>
                   </a>
                 </li>
                 <li className="btn">
                   <a href="#" className="iconn">
-                    <div onClick={() => this.changeView("account")}>
+                    <div
+                      onClick={() => this.changeView("account")}
+                      renderView={() => this.renderView()}
+                    >
                       {/* <img src={account} alt="account" className="icon" /> */}
                       <small className="none">Account</small>
                     </div>
@@ -251,9 +270,7 @@ class Home extends React.Component {
             handleClick={this.handleClick}
           />
           <p className="brands">My Posted Products</p>
-          <MyPosts
-            items={this.state.items}
-          />
+          <MyPosts items={this.state.items} deleteItem={this.deleteItem} />
           <br></br>
           <br></br>
           <p className="copy">copyright boshreem</p>
@@ -307,8 +324,107 @@ class Home extends React.Component {
         counter: this.state.counter + 1,
       });
     }
-    // console.log(this.state.counter);
-    // console.log(this.state.pocket, "pockeeeeeeet");
+  }
+  deleteItem(e) {
+    axios
+      .delete(`/${e.target.id}`)
+      .then((response) => console.log("deleted"))
+      .catch((err) => console.log(err));
+  }
+  searching(mot) {
+    this.setState({ word: word });
+  }
+  fetch() {
+    axios
+      .get("/wilson")
+      .then((result) => {
+        console.log(result.data);
+        this.setState({ data: result.data });
+        // console.log(result);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/nike")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/head")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/babolat")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/diadora")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/getme")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/shoes")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/backpack")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/bags")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/clothes")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get("/rackets")
+      .then((result) => {
+        this.setState({ data: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
   render() {
     return <>{this.renderView()}</>;

@@ -133,7 +133,7 @@ INSERT INTO babolat (url,model,price) VALUES ('https://www.rackets.ie/wp-content
 INSERT INTO babolat (url,model,price) VALUES ('https://www.e-tennis.com/media/catalog/product/cache/1/image/720x/9df78eab33525d08d6e5fb8d27136e95/7/5/753074-191-babolat-pure-aero-tennis-backpack-2019-yellow-black.jpg','babolat backpack',75);
 INSERT INTO babolat (url,model,price) VALUES ('https://www.tennispro.eu/media/catalog/product/cache/5/thumbnail/1200x/9df78eab33525d08d6e5fb8d27136e95/1/0/101404_1_11.jpg','babolat racket',189);
  
-INSERT INTO shoes (url,model,price) VALUES ('https://lh3.googleusercontent.com/proxy/JHxtcmkVk2c189QKODfy13d7bvnI452YhKkBzPtBK0HKBdrr8GDbTsBHTC91iYt3lEWm09wGpOQSK5rVQWl1fa4KMpoLHOZ91qbtT0bdfP-WLS75-CDfW9aQS4GwLpy1ZXgBZc8jDYsJ2d9evscc9s47jEY-Esz7URoU2hAq-J_Qt38I-Mn8qFhdf316C5a6j4v3','nike shoes',110);
+INSERT INTO shoes (url,model,price) VALUES ('https://global.tennis-point.com/dw/image/v2/BBDP_PRD/on/demandware.static/-/Sites-master-catalog/default/dwbc0d9f86/images/004/155/16352000_0_1.jpg?q=80&sw=260','nike shoes',110);
 INSERT INTO shoes (url,model,price) VALUES ('https://images.asics.com/is/image/asics/E751Y_0193_SR_RT_GLB?$sfcc-product$','asics shoes',102);
 INSERT INTO shoes (url,model,price) VALUES ('https://assets.adidas.com/images/w_600,f_auto,q_auto/bca62e725b8b49fdb578ac3800f1fed0_9366/GameCourt_Tennis_Shoes_White_FX1552_01_standard.jpg','adidas shoes',125);
 INSERT INTO shoes (url,model,price) VALUES ('https://cdn.shopify.com/s/files/1/0291/6961/4901/products/38sma0072-042_blanc_1_13_1200x1200.jpg?v=1595374668','lacoste shoes',100);
