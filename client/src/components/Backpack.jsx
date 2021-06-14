@@ -21,7 +21,7 @@ class Backpack extends React.Component {
             </a>
             <div
               className="cart"
-              onClick={() => props.handleClick(backpack.price)}
+              onClick={() => this.props.handleClick(backpack.price)}
             >
               <a href="#">Add To Cart</a>
             </div>

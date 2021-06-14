@@ -96,7 +96,7 @@ class Home extends React.Component {
       .get("/getme")
       .then((result) => {
         this.setState({ items: result.data });
-        this.fetch();
+        // this.fetch();
       })
       .catch((err) => {
         console.error(err);
@@ -231,9 +231,9 @@ class Home extends React.Component {
       });
     }
   }
-  deleteItem(e) {
+  deleteItem(id) {
     axios
-      .delete(`/${e.target.id}`)
+      .delete(`/post/${id}`)
       .then((response) => console.log("deleted"))
       .catch((err) => console.log(err));
   }

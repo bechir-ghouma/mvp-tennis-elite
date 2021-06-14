@@ -23,7 +23,7 @@ class Rackets extends React.Component {
             </a>
             <div
               className="cart"
-              onClick={() => props.handleClick(racket.price)}
+              onClick={() => this.props.handleClick(racket.price)}
             >
               <a href="#">Add To Cart</a>
             </div>

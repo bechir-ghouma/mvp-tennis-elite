@@ -52,7 +52,7 @@ CREATE TABLE diadora (
 
 CREATE TABLE rackets (
   id int NOT NULL AUTO_INCREMENT,
-  url varchar(500) ,
+  url varchar(1000) ,
   model varchar(50) NOT NULL ,
   price int NOT NULL ,
   PRIMARY KEY (ID)
@@ -254,7 +254,7 @@ INSERT INTO rackets (url,model,price) VALUES ('https://shop.wilson.com/media/cat
 INSERT INTO rackets (url,model,price) VALUES ('https://www.tennispro.eu/media/catalog/product/cache/5/thumbnail/1200x/9df78eab33525d08d6e5fb8d27136e95/1/0/101414_1_5.jpg','babolat strike evo racket',210);
 INSERT INTO rackets (url,model,price) VALUES ('https://www.e-tennis.com/media/catalog/product/cache/1/thumbnail/1200x1200/9df78eab33525d08d6e5fb8d27136e95/1/0/101354-babolat-pure-aero-tennis-racquet-2019-black-yellow_4.jpg','babolat pure aero racket',220);
 INSERT INTO rackets (url,model,price) VALUES ('https://www.tennispro.eu/media/catalog/product/cache/5/thumbnail/1200x/9df78eab33525d08d6e5fb8d27136e95/1/0/10295928_1_3.jpg','dunlop srixon 600 racket',170);
-INSERT INTO rackets (url,model,price) VALUES ('https://lh3.googleusercontent.com/proxy/VbZ9EfBTTHRRPSYfuB_FvX2LOPULBtRallQXyjPUml6aFEbh5AfUOzzRB0fX_uMwEU8XFDBsmZUzHvcaBK1AevA44IEcN_hXJEx67YvBKbaSTJvWNvfmepYNJ91OdBn-6XtiNvESOBTp5xeNoShBScgQQabcOGPdkbvzvfD7emoreuzGl0s1juDB_FUS_P18Y1C5Z_WBNAZPsTNMylCu1yHwfrVWC3QwemcYDVlmvrpKeXiBdLx8Tt-AXAroaEOO5g4cUwJPGBSwtrHCYiEF8Ok','head graphene 360 extreme racket' , 180);
+INSERT INTO rackets (url,model,price) VALUES ('https://www.smashinn.com/f/13699/136992687/head-graphene-360-extreme-mp-tennis-racket.jpg','head graphene 360 extreme racket' , 180);
 
 INSERT INTO clothes (url,model,price) VALUES ('https://media.damesschoenen.nl/images/tennis-point/nike-court-jurk-dames-125773.jpg','nike dri-fit',50);
 INSERT INTO clothes (url,model,price) VALUES ('https://www.badminton-point.com/media/catalog/product/cache/3/image/1200x/9df78eab33525d08d6e5fb8d27136e95/c/j/cj0429-010_1.jpg','nike t-shirt',29);

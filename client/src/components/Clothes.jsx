@@ -23,7 +23,7 @@ class Clothes extends React.Component {
             </a>
             <div
               className="cart"
-              onClick={() => props.handleClick(clothe.price)}
+              onClick={() => this.props.handleClick(clothe.price)}
             >
               <a href="#">Add To Cart</a>
             </div>

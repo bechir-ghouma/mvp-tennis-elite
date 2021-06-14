@@ -129,8 +129,8 @@ var getItems = function (callback) {
     }
   });
 };
-var deleteItem = (id, cb) => {
-  db.query("DELETE FROM posts WHERE id = ?", id, (err, event) => {
+var deleteItem = (params, cb) => {
+  db.query("DELETE FROM posts WHERE id = ?", params, (err, event) => {
     cb(err, event);
   });
 };

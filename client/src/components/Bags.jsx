@@ -20,7 +20,7 @@ class Bags extends React.Component {
             <a href="#" className="price">
               {bag.price}$
             </a>
-            <div className="cart" onClick={() => props.handleClick(bag.price)}>
+            <div className="cart" onClick={() => this.props.handleClick(bag.price)}>
               <a href="#">Add To Cart</a>
             </div>
           </div>

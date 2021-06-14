@@ -14,7 +14,7 @@ const MyPosts = (props) => {
           <a href="#" className="price">
             {mypost.price}$
           </a>
-          <div className="cart" onClick={() => props.deleteItem(mypost.price)}>
+          <div className="cart" onClick={() => props.deleteItem(mypost.id)}>
             <a href="#">Delete Item</a>
           </div>
         </div>

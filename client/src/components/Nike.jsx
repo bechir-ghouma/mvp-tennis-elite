@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Nike = (props) => {
   return (
@@ -6,7 +6,6 @@ const Nike = (props) => {
       {props.nike.map((nik) => (
         <div
           className="slider-box"
-          
         >
           <div className="img-box">
             <img src={nik.url} alt="nike" />

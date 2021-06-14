@@ -1,12 +1,11 @@
 var express = require("express");
-var bodyParser = require("body-parser");
 const db = require("../database-mysql/index.js");
 var items = require("../database-mysql");
 
 var app = express();
 const PORT = 7000;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + "/../client/build"));
 app.get("/wilson", function (req, res) {
@@ -141,7 +140,7 @@ app.get("/getme", function (req, res) {
   });
 });
 app.delete("/post/:id", (req, res) => {
-  db.deleteComment(req.params.comment, (err, result) => {
+  db.deleteItem(req.params.id, (err, result) => {
     if (err) {
       console.log(err);
     } else {

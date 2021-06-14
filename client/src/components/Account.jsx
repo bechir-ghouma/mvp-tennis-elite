@@ -21,7 +21,7 @@ class Account extends React.Component {
     }
     if (this.props.pocket > 0) {
       swal.fire({
-        icon: "Success",
+        icon: "success",
         title: "Success",
         text: "You will recieve your staff in 2 days",
       });
