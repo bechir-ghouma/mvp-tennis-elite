@@ -6,7 +6,7 @@ const Babolat = (props) => {
       {props.babolat.map((babo) => (
         <div
           className="slider-box"
-          onClick={() => props.handleClick(babo.price)}
+          
         >
           <div className="img-box">
             <img src={babo.url} alt="babolat" />
@@ -17,7 +17,7 @@ const Babolat = (props) => {
           <a href="#" className="price">
             {babo.price}$
           </a>
-          <div className="cart">
+          <div className="cart" onClick={() => props.handleClick(babo.price)}>
             <a href="#">Add To Cart</a>
           </div>
         </div>

@@ -90,6 +90,14 @@ CREATE TABLE clothes (
   PRIMARY KEY (ID)
 );
 
+CREATE TABLE posts (
+  id int NOT NULL AUTO_INCREMENT,
+  url varchar(400) ,
+  model varchar(70) NOT NULL ,
+  price int NOT NULL ,
+  PRIMARY KEY (ID)
+);
+
 
 INSERT INTO wilson (url,model,price) VALUES ('https://shop.wilson.com/media/catalog/product/cache/38/image/9df78eab33525d08d6e5fb8d27136e95/e/d/edac749671d95f2f6d7a029af28b1fe442613260_WR043711U_1_Pro_Staff_RF97_V13_BL_RD_YE.jpg','wilson racket',255);
 INSERT INTO wilson (url,model,price) VALUES ('https://www.efootwear.eu/media/catalog/product/cache/image/650x650/0/0/0000207046788_01_ks.jpg','wilson shoes',105);

@@ -6,7 +6,7 @@ const Head = (props) => {
       {props.head.map((hea) => (
         <div
           className="slider-box"
-          onClick={() => props.handleClick(hea.price)}
+          
         >
           <div className="img-box">
             <img src={hea.url} alt="head" />
@@ -17,7 +17,7 @@ const Head = (props) => {
           <a href="#" className="price">
             {hea.price}$
           </a>
-          <div className="cart">
+          <div className="cart" onClick={() => props.handleClick(hea.price)}>
             <a href="#">Add To Cart</a>
           </div>
         </div>

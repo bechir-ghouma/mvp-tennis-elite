@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 class Shoes extends React.Component {
   constructor(props) {
@@ -7,13 +6,25 @@ class Shoes extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="bigBox">
         {this.props.shoes.map((shoe) => (
-          <ul>
-            <li>{shoe.url}</li>
-            <li>{shoe.model}</li>
-            <li>{shoe.price}$</li>
-          </ul>
+          <div
+            className="slider-box"
+            
+          >
+            <div className="img-box">
+              <img src={shoe.url} alt="1"></img>
+            </div>
+            <div className="detail">
+              <a href="#">{shoe.model}</a>
+            </div>
+            <a href="#" className="price">
+              {shoe.price}$
+            </a>
+            <div className="cart" onClick={() => props.handleClick(shoe.price)}>
+              <a href="#">Add To Cart</a>
+            </div>
+          </div>
         ))}
       </div>
     );

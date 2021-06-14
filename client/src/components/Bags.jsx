@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import axios from "axios";
 
 class Bags extends React.Component {
@@ -7,13 +7,25 @@ class Bags extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="bigBox">
         {this.props.bags.map((bag) => (
-          <ul >
-            <li>{bag.url}</li>
-            <li>{bag.model}</li>
-            <li>{bag.price}$</li>
-          </ul>
+          <div
+            className="slider-box"
+            
+          >
+            <div className="img-box">
+              <img src={bag.url} />
+            </div>
+            <div className="detail">
+              <a href="#">{bag.model}</a>
+            </div>
+            <a href="#" className="price">
+              {bag.price}$
+            </a>
+            <div className="cart" onClick={() => props.handleClick(bag.price)}>
+              <a href="#">Add To Cart</a>
+            </div>
+          </div>
         ))}
       </div>
     );

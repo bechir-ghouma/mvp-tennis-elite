@@ -1,6 +1,6 @@
-var mysql = require('mysql');
-const mysqlConfig = require('./config.js');
-const Promise = require('bluebird');
+var mysql = require("mysql");
+const mysqlConfig = require("./config.js");
+const Promise = require("bluebird");
 
 var connection = mysql.createConnection(mysqlConfig);
 
@@ -13,7 +13,7 @@ db.connectAsync().then(() =>
 );
 
 var selectWilson = function (callback) {
-  db.query('SELECT * FROM wilson', function (err, results) {
+  db.query("SELECT * FROM wilson", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -22,7 +22,7 @@ var selectWilson = function (callback) {
   });
 };
 var selectNike = function (callback) {
-  db.query('SELECT * FROM nike', function (err, results) {
+  db.query("SELECT * FROM nike", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -31,7 +31,7 @@ var selectNike = function (callback) {
   });
 };
 var selectHead = function (callback) {
-  db.query('SELECT * FROM head', function (err, results) {
+  db.query("SELECT * FROM head", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -40,7 +40,7 @@ var selectHead = function (callback) {
   });
 };
 var selectBabolat = function (callback) {
-  db.query('SELECT * FROM babolat', function (err, results) {
+  db.query("SELECT * FROM babolat", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -49,7 +49,7 @@ var selectBabolat = function (callback) {
   });
 };
 var selectDiadora = function (callback) {
-  db.query('SELECT * FROM diadora', function (err, results) {
+  db.query("SELECT * FROM diadora", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -58,7 +58,7 @@ var selectDiadora = function (callback) {
   });
 };
 var selectRackets = function (callback) {
-  db.query('SELECT * FROM rackets', function (err, results) {
+  db.query("SELECT * FROM rackets", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -67,7 +67,7 @@ var selectRackets = function (callback) {
   });
 };
 var selectShoes = function (callback) {
-  db.query('SELECT * FROM shoes', function (err, results) {
+  db.query("SELECT * FROM shoes", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -76,7 +76,7 @@ var selectShoes = function (callback) {
   });
 };
 var selectBags = function (callback) {
-  db.query('SELECT * FROM bags', function (err, results) {
+  db.query("SELECT * FROM bags", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -85,7 +85,7 @@ var selectBags = function (callback) {
   });
 };
 var selectBackpack = function (callback) {
-  db.query('SELECT * FROM backpack', function (err, results) {
+  db.query("SELECT * FROM backpack", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -94,7 +94,7 @@ var selectBackpack = function (callback) {
   });
 };
 var selectClothes = function (callback) {
-  db.query('SELECT * FROM clothes', function (err, results) {
+  db.query("SELECT * FROM clothes", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -103,7 +103,25 @@ var selectClothes = function (callback) {
   });
 };
 var selectPocket = function (callback) {
-  db.query('SELECT * FROM pocket', function (err, results) {
+  db.query("SELECT * FROM pocket", function (err, results) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+const postItem = (params, cb) => {
+  connection.query(
+    "INSERT INTO posts(url,model,price) VALUES(?,?,?)",
+    params,
+    (err, events) => {
+      cb(err, events);
+    }
+  );
+};
+var getItems = function (callback) {
+  db.query("SELECT * FROM posts", function (err, results) {
     if (err) {
       callback(err, null);
     } else {
@@ -124,4 +142,6 @@ module.exports = {
   selectBackpack,
   selectClothes,
   selectPocket,
+  postItem,
+  getItems,
 };

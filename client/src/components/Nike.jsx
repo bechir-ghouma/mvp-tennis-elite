@@ -6,7 +6,7 @@ const Nike = (props) => {
       {props.nike.map((nik) => (
         <div
           className="slider-box"
-          onClick={() => props.handleClick(nik.price)}
+          
         >
           <div className="img-box">
             <img src={nik.url} alt="nike" />
@@ -17,7 +17,7 @@ const Nike = (props) => {
           <a href="#" className="price">
             {nik.price}$
           </a>
-          <div className="cart">
+          <div className="cart" onClick={() => props.handleClick(nik.price)}>
             <a href="#">Add To Cart</a>
           </div>
         </div>

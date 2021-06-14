@@ -121,7 +121,25 @@ app.get("/pocket", function (req, res) {
     }
   });
 });
-
+app.post("/post", (req, res) => {
+  db.postItem([req.body.url, req.body.model, req.body.price], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+app.get("/getme", function (req, res) {
+  db.getItems(function (err, data) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.json(data);
+    }
+  });
+});
 app.listen(7000, function () {
   console.log("listening on port 7000!");
 });

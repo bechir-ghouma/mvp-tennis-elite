@@ -17,6 +17,7 @@ import Shoes from "./Shoes.jsx";
 import Rackets from "./Rackets.jsx";
 import Bags from "./Bags.jsx";
 import Backpack from "./Backpack.jsx";
+import Post from "./Post.jsx";
 
 class Home extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Home extends React.Component {
       clothes: [],
       shoes: [],
       rackets: [],
+      items: [],
       view: "home",
       pocket: 0,
       counter: 0,
@@ -83,14 +85,14 @@ class Home extends React.Component {
       .catch((err) => {
         console.error(err);
       });
-    // axios
-    //   .get("/pocket")
-    //   .then((result) => {
-    //     this.setState({ pocket: result.data });
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
+    axios
+      .get("/getme")
+      .then((result) => {
+        this.setState({ items: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     axios
       .get("/shoes")
       .then((result) => {
@@ -160,7 +162,7 @@ class Home extends React.Component {
                   <a href="#" className="iconn">
                     <div onClick={() => this.changeView("account")}>
                       {/* <img src={account} alt="account" className="icon" /> */}
-                      <small className="none" >Account</small>
+                      <small className="none">Account</small>
                     </div>
                   </a>
                 </li>
@@ -181,7 +183,7 @@ class Home extends React.Component {
                   </a>
                 </li>
                 &nbsp;
-                <li className="btn">
+                <li className="btn" onClick={() => this.changeView("post")}>
                   <a href="#" className="iconn">
                     <small className="none">Posts</small>
                   </a>
@@ -191,19 +193,39 @@ class Home extends React.Component {
           </div>
           <div className="category">
             <ul>
-              <a href="#" onClick={() => this.changeView("rackets")}>
+              <a
+                href="#"
+                onClick={() => this.changeView("rackets")}
+                handleClick={this.handleClick}
+              >
                 Tennis Rackets
               </a>
-              <a href="#" onClick={() => this.changeView("shoes")}>
+              <a
+                href="#"
+                onClick={() => this.changeView("shoes")}
+                handleClick={this.handleClick}
+              >
                 Tennis Shoes
               </a>
-              <a href="#" onClick={() => this.changeView("bags")}>
+              <a
+                href="#"
+                onClick={() => this.changeView("bags")}
+                handleClick={this.handleClick}
+              >
                 Tennis Bags
               </a>
-              <a href="#" onClick={() => this.changeView("backpacks")}>
+              <a
+                href="#"
+                onClick={() => this.changeView("backpacks")}
+                handleClick={this.handleClick}
+              >
                 Tennis Backpack
               </a>
-              <a href="#" onClick={() => this.changeView("clothes")}>
+              <a
+                href="#"
+                onClick={() => this.changeView("clothes")}
+                handleClick={this.handleClick}
+              >
                 Tennis Clothes
               </a>
             </ul>
@@ -227,6 +249,10 @@ class Home extends React.Component {
           <Diadora
             diadora={this.state.diadora}
             handleClick={this.handleClick}
+          />
+          <p className="brands">My Posted Products</p>
+          <MyPosts
+            items={this.state.items}
           />
           <br></br>
           <br></br>
@@ -258,6 +284,8 @@ class Home extends React.Component {
       );
     } else if (view === "about") {
       return <About handleClick={this.handleClick} />;
+    } else if (view === "post") {
+      return <Post handleClick={this.handleClick} />;
     }
   }
   changeView(view) {
@@ -279,8 +307,8 @@ class Home extends React.Component {
         counter: this.state.counter + 1,
       });
     }
-    console.log(this.state.counter);
-    console.log(this.state.pocket, "pockeeeeeeet");
+    // console.log(this.state.counter);
+    // console.log(this.state.pocket, "pockeeeeeeet");
   }
   render() {
     return <>{this.renderView()}</>;

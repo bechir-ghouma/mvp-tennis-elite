@@ -8,13 +8,25 @@ class Clothes extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="bigBox">
         {this.props.clothes.map((clothe) => (
-          <ul>
-            <img src={clothe.url} alt="1"/>
-            <li>{clothe.model}</li>
-            <li>{clothe.price}$</li>
-          </ul>
+          <div
+            className="slider-box"
+            
+          >
+            <div className="img-box">
+              <img src={clothe.url} alt="1" />
+            </div>
+            <div className="detail">
+              <a href="#">{clothe.model}</a>
+            </div>
+            <a href="#" className="price">
+              {clothe.price}$
+            </a>
+            <div className="cart" onClick={() => props.handleClick(clothe.price)}>
+              <a href="#">Add To Cart</a>
+            </div>
+          </div>
         ))}
       </div>
     );

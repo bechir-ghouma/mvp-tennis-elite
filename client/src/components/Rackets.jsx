@@ -8,13 +8,25 @@ class Rackets extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="bigBox">
         {this.props.rackets.map((racket) => (
-          <ul>
-            <li>{racket.url}</li>
-            <li>{racket.model}</li>
-            <li>{racket.price}$</li>
-          </ul>
+          <div
+            className="slider-box"
+            
+          >
+            <div className="img-box">
+              <img src={racket.url}></img>
+            </div>
+            <div className="detail">
+              <a href="#">{racket.model}</a>
+            </div>
+            <a href="#" className="price">
+              {racket.price}$
+            </a>
+            <div className="cart" onClick={() => props.handleClick(racket.price)}>
+              <a href="#">Add To Cart</a>
+            </div>
+          </div>
         ))}
       </div>
     );

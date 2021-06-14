@@ -6,7 +6,7 @@ const Wilson = (props) => {
       {props.wilson.map((wils) => (
         <div
           className="slider-box"
-          onClick={() => props.handleClick(wils.price)}
+          
         >
           <div className="img-box">
             <img src={wils.url} alt="wilson" />
@@ -17,7 +17,7 @@ const Wilson = (props) => {
           <a href="#" className="price">
             {wils.price}$
           </a>
-          <div className="cart">
+          <div className="cart" onClick={() => props.handleClick(wils.price)}>
             <a href="#">Add To Cart</a>
           </div>
         </div>
