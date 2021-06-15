@@ -17,7 +17,7 @@ const Navbar = (props) => (
                 type="text"
                 placeholder=" search..."
                 className="search"
-                searching={props.searching}
+                onChange={(e) => props.searching(e.target.value )}
                 data={props.data}
               ></input>
             </a>

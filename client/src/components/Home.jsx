@@ -1,22 +1,13 @@
 import React from "react";
-// import account from "../logo/LogoMakr-8MvvF1.png";
 import About from "./About.jsx";
 import Search from "./Search.jsx";
+import ItemList from "./ItemList.jsx";
 import Navbar from "./Navbar.jsx";
 import axios from "axios";
-import Wilson from "./Wilson.jsx";
-import Nike from "./Nike.jsx";
-import Head from "./Head.jsx";
-import Babolat from "./Babolat.jsx";
-import Diadora from "./Diadora.jsx";
 import Account from "./Account.jsx";
-import Clothes from "./Clothes.jsx";
-import Shoes from "./Shoes.jsx";
-import Rackets from "./Rackets.jsx";
-import Bags from "./Bags.jsx";
-import Backpack from "./Backpack.jsx";
 import Post from "./Post.jsx";
 import MyPosts from "./MyPosts.jsx";
+import Categories from "./CategoryList.jsx";
 
 class Home extends React.Component {
   constructor(props) {
@@ -46,135 +37,49 @@ class Home extends React.Component {
     this.fetch = this.fetch.bind(this);
   }
   componentDidMount() {
-    axios
-      .get("/wilson")
-      .then((result) => {
-        console.log(result.data, "hgfd");
-        this.setState({ wilson: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/nike")
-      .then((result) => {
-        this.setState({ nike: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/head")
-      .then((result) => {
-        this.setState({ head: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/babolat")
-      .then((result) => {
-        this.setState({ babolat: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/diadora")
-      .then((result) => {
-        this.setState({ diadora: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/getme")
-      .then((result) => {
-        this.setState({ items: result.data });
-        // this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/shoes")
-      .then((result) => {
-        this.setState({ shoes: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/backpack")
-      .then((result) => {
-        this.setState({ backpacks: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/bags")
-      .then((result) => {
-        this.setState({ bags: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/clothes")
-      .then((result) => {
-        this.setState({ clothes: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get("/rackets")
-      .then((result) => {
-        this.setState({ rackets: result.data });
-        this.fetch();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    this.fetch();
+    Promise.all(
+      [
+        "wilson",
+        "babolat",
+        "diadora",
+        "nike",
+        "head",
+        "shoes",
+        "backpack",
+        "bags",
+        "clothes",
+        "rackets",
+      ].map((category) =>
+        axios.get("/" + category).then((result) => {
+          this.setState({ [category]: result.data });
+        })
+      )
+    );
+    axios.get("/getme").then((result) => {
+      this.setState({ items: result.data });
+      // this.fetch();
+    });
   }
 
   renderView() {
     const { view } = this.state;
-    console.log(view);
     if (view === "home") {
       return (
         <>
           <p className="brands">Wilson Products</p>
-          <Wilson wilson={this.state.wilson} handleClick={this.handleClick} />
+          <ItemList items={this.state.wilson} handleClick={this.handleClick} />
           <br></br>
           <p className="brands">Nike Products</p>
-          <Nike nike={this.state.nike} handleClick={this.handleClick} />
+          <ItemList items={this.state.nike} handleClick={this.handleClick} />
           <br></br>
           <p className="brands">Head Products</p>
-          <Head head={this.state.head} handleClick={this.handleClick} />
+          <ItemList items={this.state.head} handleClick={this.handleClick} />
           <br></br>
           <p className="brands">Babolat Products</p>
-          <Babolat
-            babolat={this.state.babolat}
-            handleClick={this.handleClick}
-          />
+          <ItemList items={this.state.babolat} handleClick={this.handleClick} />
           <br></br>
           <p className="brands">Diadora Products</p>
-          <Diadora
-            diadora={this.state.diadora}
-            handleClick={this.handleClick}
-          />
+          <ItemList items={this.state.diadora} handleClick={this.handleClick} />
           <p className="brands">My Posted Products</p>
           <MyPosts items={this.state.items} deleteItem={this.deleteItem} />
           <br></br>
@@ -183,21 +88,37 @@ class Home extends React.Component {
         </>
       );
     } else if (view === "shoes") {
-      return <Shoes shoes={this.state.shoes} handleClick={this.handleClick} />;
+      return (
+        <Categories
+          categories={this.state.shoes}
+          handleClick={this.handleClick}
+        />
+      );
     } else if (view === "rackets") {
       return (
-        <Rackets rackets={this.state.rackets} handleClick={this.handleClick} />
+        <Categories
+          categories={this.state.rackets}
+          handleClick={this.handleClick}
+        />
       );
     } else if (view === "clothes") {
       return (
-        <Clothes clothes={this.state.clothes} handleClick={this.handleClick} />
+        <Categories
+          categories={this.state.clothes}
+          handleClick={this.handleClick}
+        />
       );
     } else if (view === "bags") {
-      return <Bags bags={this.state.bags} handleClick={this.handleClick} />;
+      return (
+        <Categories
+          categories={this.state.bags}
+          handleClick={this.handleClick}
+        />
+      );
     } else if (view === "backpacks") {
       return (
-        <Backpack
-          backpacks={this.state.backpacks}
+        <Categories
+          categories={this.state.backpack}
           handleClick={this.handleClick}
         />
       );
@@ -216,7 +137,6 @@ class Home extends React.Component {
       view: view,
     });
   }
-  //PATCH /cart/:tables  /:id
 
   handleClick(price) {
     if (this.state.counter >= 1) {
@@ -237,101 +157,10 @@ class Home extends React.Component {
       .then((response) => console.log("deleted"))
       .catch((err) => console.log(err));
   }
-  searching(mot) {
+  searching(word) {
     this.setState({ word: word });
   }
-  fetch() {
-    //   axios
-    //     .get('/wilson')
-    //     .then((result) => {
-    //       console.log(result.data);
-    //       this.setState({ data: result.data });
-    //       // console.log(result);
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/nike')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/head')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/babolat')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/diadora')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/getme')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/shoes')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/backpack')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/bags')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/clothes')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    //   axios
-    //     .get('/rackets')
-    //     .then((result) => {
-    //       this.setState({ data: result.data });
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-  }
+  fetch() {}
   render() {
     return (
       <>
